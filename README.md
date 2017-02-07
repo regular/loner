@@ -2,9 +2,9 @@ loner
 ===
 A transform stream for node and browserify that ensures that certain data sequences appear in their own, separate chunks
 
-When progressively parsing streaming binary data, you often need to find magic sequences of bytes that act as separators or "keywords". This can be suprisingly hard to implement efficiently (i.e. without a lot of buffering and copying data around), because the magic sequences might be spread across an arbitray amount of data chunks and you must take care to implement all those edge cases correctly.
+When progressively parsing streaming binary data, you often need to find magic sequences of bytes that act as separators or "keywords". This can be surprisingly hard to implement efficiently (i.e. without a lot of buffering and copying data around), because the magic sequences might be spread across an arbitrary amount of chunks and you must take care to implement all those edge cases correctly.
 
-`loner` does that for you. It ensures that any magic sequence you specify will be in it's own data chunk, while otherwise leaving the sequence of chunks as it is. Thus all you need to do downstream, is to compare each incoming chunk against the sequence you are looking for, for example by using [buffer-equal](https://www.npmjs.com/package/buffer-equal).
+`loner` does that for you. It ensures that each magic sequence you specify will be in it's own data chunk, while otherwise leaving the sequence of chunks as it is. Thus all you need to do downstream, is to compare each incoming chunk against the sequence you are looking for, for example by using [buffer-equal](https://www.npmjs.com/package/buffer-equal).
 
 All the heavy lifting is actually done by [binary-stream-replace](https://www.npmjs.com/package/binary-stream-replace).
 
@@ -37,6 +37,6 @@ loner(seq1, seq2, ..., seqN)
 
 *seq1* .. *seqN* Buffer objects containing sequences that you want isolated (on separate chunks). You cann also pass Strings instead of Buffers, they will be converted internally.
 
-*NOTE* If a seuqence is fully contained in anither seqeunce, interessting stuff happens! The outcome then depends on the ordering of arguments.
+**NOTE** If a seuqence is fully contained within another seqeunce, as in `loner('Hello','lo')`, interessting things happen! The outcome then depends on the ordering of arguments. In this example, you'd get all the `lo`s separated, which obviously breaks each `hallo` into `hel` and `lo`.
 
 
