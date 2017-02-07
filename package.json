@@ -1,0 +1,38 @@
+{
+  "name": "loner",
+  "version": "1.0.0",
+  "description": "A transform stream for node and browserify that ensures that certain data sequences appear in their own, separate chunks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "binary",
+    "stream",
+    "transform",
+    "parsing",
+    "isolation",
+    "isolate",
+    "separate"
+  ],
+  "author": "Jan Bölsche <jan@lagomorph.de> (http://regular.codes)",
+  "license": "MIT",
+  "dependencies": {
+    "binary-stream-replace": "^1.0.2",
+    "isbuffer": "0.0.0",
+    "through": "^2.3.8",
+    "throughout": "0.0.0"
+  },
+  "devDependencies": {
+    "buffer-equal": "^1.0.0",
+    "tape": "^4.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regular/loner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/regular/loner/issues"
+  },
+  "homepage": "https://github.com/regular/loner#readme"
+}
